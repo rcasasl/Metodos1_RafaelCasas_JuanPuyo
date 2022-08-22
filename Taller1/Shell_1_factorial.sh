@@ -1,4 +1,4 @@
-echo calcular faactorial de: 
+echo calcular factorial de: 
 read n
 function factorial(){
 	local fact=1
