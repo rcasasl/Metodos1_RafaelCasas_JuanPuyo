@@ -68,14 +68,10 @@ for i in range(N):
         ax.quiver(x[i],y[j],Cfx[i,j],Cfy[i,j],color="b")
 
 theta=np.linspace(0,2*np.pi,50)
-coor_x=np.zeros((1,50))
+coor_x=np.zeros(50)
 coor_y=coor_x.copy()
-coor_x[0,:]=R*np.cos(theta)
-coor_y[0,:]=R*np.sin(theta)
-"""
-No se que paso con plot pero no me
-dejó pintar un circulo, lo tuve que hacer con
-scatter
-"""
-ax.scatter(coor_x,coor_y,color="r")
+coor_x[:]=R*np.cos(theta)
+coor_y[:]=R*np.sin(theta)
+
+ax.plot(coor_x,coor_y,color="r")
 
