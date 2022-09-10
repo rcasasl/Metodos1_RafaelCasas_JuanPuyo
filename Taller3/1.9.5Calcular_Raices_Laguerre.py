@@ -45,7 +45,7 @@ def GetAllRoots(x,Funcion,tolerancia=6):
     
     Roots = np.array([])
     
-    if Funcion(0) < 1e-10:
+    if np.abs(Funcion(0)) < 1e-10:
         Roots=np.append(Roots,0)
     
     for i in x:
