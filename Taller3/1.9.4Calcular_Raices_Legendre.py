@@ -42,7 +42,7 @@ def Metod_Newt(f,der_f,xn,h=1e-8,iter_max=1000,preci=1e-8):
         return False
     else:
         return xn
-def GetAllRoots(x,Funcion,tolerancia=8):
+def GetAllRoots(x,Funcion,tolerancia=5):
     
     Roots = np.array([])
     
@@ -73,7 +73,7 @@ def Calc_Raiz_20_pol():
     for i in n:
         if i !=0:
         
-            x=np.linspace(-1,1,100)
+            x=np.linspace(-1,1,200)
             r=GetAllRoots(x,Legendre(i))
             
             Raices=np.append(Raices,"Legendre grad "+str(i)+":")
