@@ -42,7 +42,7 @@ def GetAllRoots(x,Funcion,tolerancia=8):
     Roots = np.array([])
     
     if Funcion(0) < 1e-10:
-        Roots=np.append(Roots,Funcion(0))
+        Roots=np.append(Roots,0)
     
     for i in x:
         root = Metod_Newt(Funcion,Derivative,i)
