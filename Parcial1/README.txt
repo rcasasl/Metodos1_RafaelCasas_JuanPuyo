@@ -1,5 +1,13 @@
 creando carpeta para el parcial ;)
 
+"""
+la derivada analítica de la función f(x)=sqrt(tanx) es:
+    
+    f'(x)= sec^2(x)/(2*sqrt(tan(x)))
+
+
+"""
+
 
 df= lambda x: (np.cos(x))**-2/(2*np.sqrt(np.tan(x)))
 
