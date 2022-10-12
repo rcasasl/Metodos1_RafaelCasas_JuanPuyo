@@ -121,7 +121,7 @@ puntos=np.zeros((int(N),4))
     
 for i in tqdm(range(int(N))):
     sol,it,vect,rvect=GetSolve(G,GetPoint())
-    if f(sol) > 1e-8:
+    if f(sol) > 1e-10:
         print("Error")
     puntos[i,0]= sol[0]
     puntos[i,1]= sol[1]
