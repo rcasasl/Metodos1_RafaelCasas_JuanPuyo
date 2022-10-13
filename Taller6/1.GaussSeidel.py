@@ -6,44 +6,41 @@ Created on Thu Sep 29 14:34:38 2022
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
-from tqdm import tqdm
-
 M = np.array([[3,-1,-1],[-1.,3.,1.],[2,1,4]])
 print(M)
 b = np.array([1.,3.,7.])
 print(b)
 
-def GetGaussSeidelMethod(A,b,itmax=100,error = 1e-10):
-    
-    M,N = A.shape
-    """
-    if M != 3 or N != 3 or np.linalg.det(A) == 0.:
-        return print("Este método esta diseñado para sistemas 3x3")
-    """
 
-    x = np.zeros(N)
+def Gauss_Seidel(matriz,vector,itmax=100,error = 1e-10):
+        M,N = matriz.shape
     
-    sumk = np.zeros_like(x)
+        x = np.zeros(N)
     
-    it = 0
+        sumk = np.zeros_like(x)
     
-    residuo = np.linalg.norm( b - np.dot(A,x) )
+        it = 0
+        
+        
     
-    while ( residuo > error and it < itmax ):
+        residuo = np.linalg.norm(vector - np.dot(matriz,x))
         
-        it += 1
+        while ( residuo > error and it < itmax):
         
-        x1=(1+x[1]+x[2])/3
-        y=(3+x1-x[2])/3
-        z=(7-2*(x1)-y)/4
+            it += 1
         
+            for i in range(M):
+                sum_ = 0
+            
+                for j in range(N):
+                    if i != j:
+                        sum_ += matriz[i][j]*x[j]
+                x[i] = (vector[i]-sum_)/(matriz[i][i])
+                
+            residuo = np.linalg.norm(vector-np.dot(matriz,x))
         
-        x[0],x[1],x[2]= x1,y,z
-        residuo = np.linalg.norm( b - np.dot(A,x) )
-        
-    return x,it,residuo
+        return x,it
 
-Xsol,it,residuo= GetGaussSeidelMethod(M,b)
+Xsol,it= Gauss_Seidel(M,b)
 
-print(Xsol,it,residuo)
+print(Xsol,it)
