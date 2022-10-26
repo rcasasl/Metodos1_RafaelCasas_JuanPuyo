@@ -46,12 +46,6 @@ e) Use una taza de aprendizaje γ = 1 × 10^−3 o γ = 5 × 10^−4
 parada  = 0.01 y un m´aximo de iteraciones de 1 × 10^4
 
 """
-#"""
-def ErrorProm(p,x,y):
-    term=np.abs((y-M(x,p)))
-    return np.average(term)
-#"""
-#par0=np.array([np.random.rand(), np.random.rand(), np.random.rand()])
 par0=np.array([1,1,1])
 print(par0)
 
@@ -76,6 +70,7 @@ def DescGrad(M,p,x,y,lr=1e-3,epochs=int(1e4),error=1e-2):
     d = 1
     it = 0
     
+    print("Entrenamiento en curso...")
     
     
     
@@ -97,28 +92,24 @@ def DescGrad(M,p,x,y,lr=1e-3,epochs=int(1e4),error=1e-2):
         #print(NewMe)
         
         
-        d = ErrorProm(p,x,y)
-        #d= np.abs(CurrentMe-NewMe)/NewMe
-        #d=np.sqrt(NewMe/len(y))
+       
+        d= np.abs(CurrentMe-NewMe)/NewMe
+        d=np.sqrt(NewMe/len(y))
         
-        #print(CurrentMe,NewMe,d,"\n",p,"\n")
-        """
-        if it%500==0:
-            print(CurrentMe,NewMe)
-        #"""    
+            
         it += 1
         
     if d < error:
         print(' Entrenamiento completo ', d, 'iteraciones', it)
         
     if it == epochs:
-        print(' Entrenamiento no completado ',d)
+        print(' Máximo de iteraciones alcanzado ',d)
         
     return p,it
 
 
 par,num_it=DescGrad(M,par0,x,y)
-print(par)
+print("parametros: ",par)
 
 """
 f) Grafique los datos y the best fit model con sus par´ametros.
